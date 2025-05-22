@@ -16,7 +16,7 @@ MoonEventTimes calculateMoonEvents(const std::vector<MoonObservation>& observati
     double prevElevation = observations[0].elevation;
     int maxIndex = 0;
 
-    // Первичный анализ данных
+    
     for (size_t i = 0; i < observations.size(); i++) {
         const auto& obs = observations[i];
 
@@ -84,11 +84,11 @@ int main() {
             throw std::runtime_error("Cannot open file: " + filename);
         }
 
-        // Пропуск заголовка
+        
         std::string header;
         std::getline(file, header);
 
-        // Чтение данных
+        
         std::vector<MoonObservation> observations;
         std::string fileDate, fileTime;
         double t, r, elevation, az, fi, lg;
@@ -110,7 +110,7 @@ int main() {
 
         MoonEventTimes events = calculateMoonEvents(observations);
 
-        // Вывод результатов
+        
         std::cout << "\nDate: " << inputDate << "\n";
         std::cout << "Moonrise: " << (events.rise.empty() ? "not found" : events.rise) << "\n";
         std::cout << "Moon culmination: " << events.culmination << "\n";
